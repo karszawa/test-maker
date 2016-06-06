@@ -3,15 +3,15 @@
 function readFile(fileName, actionAfterReadingName) {
 	var actionAfterReading
 		= new Function("arg", "return " + actionAfterReadingName + "(arg)");
-  var httpObj = new XMLHttpRequest();
-  httpObj.open("GET", fileName, false);
-  httpObj.onreadystatechange = function() {
-    if (httpObj.readyState == 4) {
-    	var sentence = httpObj.responseText;
-    	actionAfterReading(sentence);
-    }
-  }
-  httpObj.send(null);
+	var httpObj = new XMLHttpRequest();
+	httpObj.open("GET", fileName, false);
+	httpObj.onreadystatechange = function() {
+		if (httpObj.readyState == 4) {
+			var sentence = httpObj.responseText;
+			actionAfterReading(sentence);
+		}
+	}
+	httpObj.send(null);
 }
 
 var question = new Array();
@@ -82,16 +82,16 @@ var makeArray = function()
 
 var makeBody = function ()
 {
-    var form_element = document.createElement("form");
-    form_element.innerHTML = '<p>次の文中の空欄を埋めてください。1 つの空欄には 1 つの単語が入ります。(1 点 × 100 = 100 点)<br/><u>質問対象が「あなた」の疑問文は基本的にTuが文頭にあるものとしています。そうでない場合は文頭にLeiを明示しています。</u></p>';
-		form_element.innerHTML += '<p>【アクセント記号付き文字一覧】回答に必要なときにコピーして使ってください。→ à è é ì ò</p>';
-		for (var i = 0; i < problemIndex.length; i++){
-    	form_element.innerHTML += '<p>' + '(' + String(i + 1) + ')' + ' ' + question[problemIndex[i]] + '<br/>' + japanese[problemIndex[i]] + '</p>';
-    }
+	var form_element = document.createElement("form");
+	form_element.innerHTML = '<p>次の文中の空欄を埋めてください。1 つの空欄には 1 つの単語が入ります。(1 点 × 100 = 100 点)<br/><u>質問対象が「あなた」の疑問文は基本的にTuが文頭にあるものとしています。そうでない場合は文頭にLeiを明示しています。</u></p>';
+	form_element.innerHTML += '<p>【アクセント記号付き文字一覧】回答に必要なときにコピーして使ってください。→ à è é ì ò</p>';
+	for (var i = 0; i < problemIndex.length; i++){
+		form_element.innerHTML += '<p>' + '(' + String(i + 1) + ')' + ' ' + question[problemIndex[i]] + '<br/>' + japanese[problemIndex[i]] + '</p>';
+	}
 
-    form_element.innerHTML += '<input type = "button" value = "送信" name = "submit" onclick = "grade();">';
-    var parent_object = document.getElementById("show");
-    parent_object.appendChild(form_element);
+	form_element.innerHTML += '<input type = "button" value = "送信" name = "submit" onclick = "grade();">';
+	var parent_object = document.getElementById("show");
+	parent_object.appendChild(form_element);
 }
 
 var grade = function()
