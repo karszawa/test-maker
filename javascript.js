@@ -1,8 +1,8 @@
 "use strict";
 
 function readFile(fileName, actionAfterReadingName) {
-	var actionAfterReading =
-		new Function("arg", "return " + actionAfterReadingName + "(arg)");
+	var actionAfterReading
+		= new Function("arg", "return " + actionAfterReadingName + "(arg)");
   var httpObj = new XMLHttpRequest();
   httpObj.open("GET", fileName, false);
   httpObj.onreadystatechange = function() {
