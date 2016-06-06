@@ -1,3 +1,5 @@
+"use strict";
+
 function readFile(fileName, actionAfterReadingName) {
 	var actionAfterReading =
 		new Function("arg", "return " + actionAfterReadingName + "(arg)");
@@ -12,9 +14,9 @@ function readFile(fileName, actionAfterReadingName) {
   httpObj.send(null);
 }
 
-question = new Array();
-japanese = new Array();
-answer = new Array();
+var question = new Array();
+var japanese = new Array();
+var answer = new Array();
 
 function generateQuestion(sentences)
 {
@@ -59,8 +61,9 @@ var makeArray = function()
 			perm[i] = [i, Math.random()];
 		}
 
-		function comp(a, b) { return(b[1] - a[1]); }
-		perm.sort(comp);
+		perm.sort(function (a, b) {
+			return b[1] - a[1];
+		});
 
 		for (var i = 0; i < perm.length; i++){
 			perm[i] = perm[i][0];
@@ -80,7 +83,7 @@ var makeBody = function ()
     var form_element = document.createElement("form");
     form_element.innerHTML = '<p>次の文中の空欄を埋めてください。1 つの空欄には 1 つの単語が入ります。(1 点 × 100 = 100 点)<br/><u>質問対象が「あなた」の疑問文は基本的にTuが文頭にあるものとしています。そうでない場合は文頭にLeiを明示しています。</u></p>';
 		form_element.innerHTML += '<p>【アクセント記号付き文字一覧】回答に必要なときにコピーして使ってください。→ à è é ì ò</p>';
-		for (i = 0; i < problemIndex.length; i++){
+		for (var i = 0; i < problemIndex.length; i++){
     	form_element.innerHTML += '<p>' + '(' + String(i + 1) + ')' + ' ' + question[problemIndex[i]] + '<br/>' + japanese[problemIndex[i]] + '</p>';
     }
 
@@ -100,7 +103,6 @@ var grade = function()
 			if (obj[j].value != answer[problemIndex[i]][j]){
 				obj[j].setAttribute("style", "border : medium #ff0000 solid;");
 				obj[j].value = "(回答)" + (obj[j].value != "" ? obj[j].value : "無回答") + " (正答)" + answer[problemIndex[i]][j];
-				add = 0;
 			}
 			else {
 				obj[j].setAttribute("style", "border : medium #00ff00 solid;");
