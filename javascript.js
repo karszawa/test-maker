@@ -1,15 +1,15 @@
 function readFile(fileName, actionAfterReadingName) {
-		var actionAfterReading
-      =  new Function("arg", "return " + actionAfterReadingName + "(arg)");
-    var httpObj = new XMLHttpRequest();
-    httpObj.open("GET", fileName, false);
-    httpObj.onreadystatechange = function() {
-      	if (httpObj.readyState == 4) {
-          	sentence = httpObj.responseText;
-          	actionAfterReading(sentence);
-      	}
-    }
-    httpObj.send(null);
+	var actionAfterReading =
+		new Function("arg", "return " + actionAfterReadingName + "(arg)");
+  var httpObj = new XMLHttpRequest();
+  httpObj.open("GET", fileName, false);
+  httpObj.onreadystatechange = function() {
+    	if (httpObj.readyState == 4) {
+        	sentence = httpObj.responseText;
+        	actionAfterReading(sentence);
+    	}
+  }
+  httpObj.send(null);
 }
 
 question = new Array();
