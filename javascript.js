@@ -24,8 +24,7 @@ function generateQuestion(sentences)
 
 	var lineNum = lines.length;
 	for (var i = 0; i < lineNum - 1; i++){
-		if (i % 2 == 0) question[Math.floor(i / 2)] = lines[i];
-		else japanese[Math.floor(i / 2)] = lines[i];
+		(i % 2 == 0 ? question : japanese)[Math.floor(i / 2)] = lines[i];
 	}
 }
 
@@ -47,7 +46,10 @@ function generateAnswer(sentences)
 var problemIndex;
 var prep = function()
 {
-	readFile("midterm_q.txt", generateQuestion), readFile("midterm_a.txt", generateAnswer), makeArray(), makeBody();
+	readFile("midterm_q.txt", generateQuestion);
+	readFile("midterm_a.txt", generateAnswer);
+	makeArray();
+	makeBody();
 }
 
 var makeArray = function()
