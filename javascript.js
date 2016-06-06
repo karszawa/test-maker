@@ -30,8 +30,7 @@ function generateQuestion(sentences)
 
 function generateAnswer(sentences)
 {
-	if (sentences.match(/\r/)) var lines = sentences.split("\r\n");
-	else var lines = sentences.split("\n");
+	var lines = sentences.split(/(\n|\r\n)/)
 
 	var lineNum = lines.length;
 	for (var i = 0; i < lineNum - 1; i++){
