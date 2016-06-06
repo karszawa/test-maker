@@ -5,7 +5,7 @@ function readFile(fileName, actionAfterReadingName) {
   httpObj.open("GET", fileName, false);
   httpObj.onreadystatechange = function() {
     	if (httpObj.readyState == 4) {
-        	sentence = httpObj.responseText;
+        	var sentence = httpObj.responseText;
         	actionAfterReading(sentence);
     	}
   }
@@ -18,8 +18,7 @@ answer = new Array();
 
 function generateQuestion(sentences)
 {
-	if (sentences.match(/\r/)) var lines = sentences.split("\r\n");
-	else var lines = sentences.split("\n");
+	var lines = sentences.split(/\n|\r\n/);
 
 	var lineNum = lines.length;
 	for (var i = 0; i < lineNum - 1; i++){
@@ -30,7 +29,7 @@ function generateQuestion(sentences)
 
 function generateAnswer(sentences)
 {
-	var lines = sentences.split(/(\n|\r\n)/)
+	var lines = sentences.split(/\n|\r\n/);
 
 	var lineNum = lines.length;
 	for (var i = 0; i < lineNum - 1; i++){
