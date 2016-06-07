@@ -68,7 +68,7 @@ Quegli,studenti,dormono,alle,diciassette
 Che,cosa,per,la,pasta
 Che
 Che,ora,È,l'una,meno,cinque
-Di,chi,colore,quella,macchina
+Di,che,colore,quella,macchina
 Che,libri,leggi
 Abbiamo,caldo
 Ho,freddo
